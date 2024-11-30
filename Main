@@ -1,1 +1,174 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{parskip} 
+\usepackage[utf8]{inputenc} 
+\usepackage[ngerman]{babel} 
+\usepackage[T1]{fontenc}   
+\usepackage{amsfonts}
+\usepackage{url} 
+\usepackage{gensymb}
+
+\title{Abgabe 1 für Computergestützte Methoden}
+
+\author{Gruppe 4 , Aljoscha Buntrock Filip Pokorski}
+
+\date{November 2024}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Der Zentrale Grenzwertsatz}
+Der Zentrale Grenzwertsatz (ZGS) ist ein fundamentales Resultat der Wahrscheinlichkeitstheorie, das die Verteilung von  Summen unabhängiger, identisch verteilter ($i.i.d.$) Zufallsvariablen (ZV) beschreibt. Er besagt, dass unter be- stimmten Voraussetzungen die Summe einer großen Anzahl solcher ZV annähernd normalverteilt ist, unabhängig von der Verteilung der einzelnen ZV. Dies ist besonders nützlich, da die Normalverteilung gut untersucht und mathematisch handhabbar ist.
+
+
+\subsection{Aussage}
+
+Sei $X_1, X_2,... X_n$ eine Folge von $i.i.d.$ ZV mit dem Erwartungswert $\mu =\mathbb{E}(X_i)$ und der Varianz $\sigma = Var(X_i)$, wobei 0 < $\sigma^2$ < $\infty$   gelte. Dann konvergiert die standardisierte Summe $Z_n$ dieser ZV für $n\to\infty$ in Verteilung gegen eine Standardnormalverteilung:
+\footnote{Der zentrale Grenzwertsatz hat verschiedene Verallgemeinerungen. Eine davon ist der \textbf{Lindeberg-Feller-Zentrale-Grenzwertsatz}[\cite{klenke_wahrscheinlichkeitstheorie_2013},Seite 328], der schwächere Bedingungen an die Unabhängigkeit und die identische Verteilung der ZV stellt.}%PlaceholderA1%
+\begin{equation}
+Z_n = \frac{\sum_{i=1}^n X_i - n\mu}{\sigma\sqrt{n}}\substack{\underrightarrow{d}}
+~\mathcal{N}(0,1).
+\label{Rechnung 1}
+\end{equation}
+Das bedeutet, dass für große $n$ die Summe der ZV nährungsweise normalverteilt ist mit Erwartungswert $n\mu$ und Varaianz $n\sigma^2$:
+\begin{equation}
+    \sum_{i=1}^n X_i \sim \mathcal{N}n\mu,n\sigma^2
+    \label{Rechnung 2}
+\end{equation}
+
+\subsection{Erklärung der Standardisierung}
+Um die Summe der ZV in eine Standardnormalverteilung zu transformieren, subtrahiert man den Erwartungswert $n\mu$ und teilt durch die Standardabweichung $\sigma\sqrt{n}$. Dies führt zu der obiegen Formel (\ref{Rechnung 1}). Die Darstellung (\ref{Rechnung 2}) ist für $n \to \infty$ nicht wohldefiniert.
+
+\subsection{Anwendungen}
+Der ZGS wird in vielen Bereichen der Statistik und der Wahrscheinlichkeitstheorie angewendet. Typische Beispiele sind:
+
+\begin{itemize}
+    
+    \item  Schätzen von Mittelwerten in der Stichprobenstatistik
+    \item  Schätzung der durchschnittlichen Aufenthaltsdauer im Krankenhaus
+
+\end{itemize}
+
+\vspace{15mm}
+
+\section{Bearbeitung zur Aufgabe 1}
+
+\subsection{Thema Datenverarbeitung}
+\subsubsection{}
+Untersuchen Sie den für Ihre Gruppe relevaten Teil der Daten, um sich mit seinem Aufbau vertraut zu machen, und beschreiben Sie Ihre Erkenntnisse.
+\begin{itemize}
+    \item Die Daten sind in der CSV(Coma Separate Values) Form vorzufinden 
+    \item nicht übersichtlich
+    \item Der Datensatz ermöglicht Analysen zu Wetterbedingungen und jahreszeitlichen Schwankungen sowie deren mögliche Auswirkungen auf Aktivitäten oder Verkehr 
+    \item nicht formatiert
+    \item Die Daten sind zwar gut strukturiert, benötigen jedoch weitere Bereinigungs- und Analysearbeiten, um fundierte Aussagen treffen zu können.
+    \item Einige Felder enthalten NA, insbesondere bei min-temperature und day-of-week. Dies deutet auf unvollständige Datensätze hin.
+\end{itemize}
+\subsubsection{}
+Importieren Sie den Datensatz in eine Tabellenkalkulation.
+\begin{figure}[ht]
+    \centering 
+    \includegraphics[width = \textwidth]{Tabelle-Excel.png}
+    \caption{unsere Tabellenkalkulation}
+    \label{fig:Tabelle}
+\end{figure}
+
+\subsubsection{}
+Berechnen Sie für den Ihrer Gruppe zugeordneten Datenteil die höchste mittlere Temperatur.
+Die Angabe soll in Grad Celsius erfolgen. Beschreiben Sie, wie Sie vorgegangen sind und halten
+Sie auch das Berechnungsergebnis fest.
+
+\begin{enumerate}
+    \item Die Daten filtern
+    \begin{itemize}
+        \item Wir haben den Datensatz mit unseren Daten markiert
+        \item Dann haben wir auf „Daten“ in der Menüleiste geklickt und „Filtern“ ausgewählt.
+        \item Wir haben die Filter angewendet, um nur die relevanten Zeilen anzuzeigen
+    \end{itemize}
+        \item Berechnung der höchsten mittleren Temperatur
+\begin{itemize}
+    \item Nachdem wir die Daten gefiltert hatten, haben wir die MAX-Funktion verwendet, um die höchste mittlere Temperatur zu berechnen.
+    \item Funktion: $=MAX(J1097:J36440) = 83$ <- berechnet die höchste mittlere Temperatur in Fahrenheit 
+    \item Funktion: $=(N1097-32)*5/9 = 28,333$ <- rechnet diese in Celsius um
+    \item \textbf{Ergebnis}: 83\degree Fahrenheit = 28,333 \degree Celcius
+\end{itemize}
+\end{enumerate}
+
+
+\subsection{Thema Datenhaltung}
+
+\subsubsection{}
+
+\subsubsection{}
+Entwerfen Sie im Abgabe-Dokument ein Datenbank-Schema im in der Vorlesung vorgestellten
+Format. Achten Sie dabei auf die 1. und 2. Normalform.
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width = \textwidth]{Datenbank-Schema-Neu.png}
+    \caption{Datenbank-Schema}
+    \label{fig:enter-label}
+\end{figure}
+\subsubsection{}
+Definieren Sie mit dem DDL-Teil von SQL die Tabellen. Halten Sie die SQL-Statements im
+Abgabe-Dokument fest.
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Tabellen-SQL.png}
+    \label{fig:enter-label}
+\end{figure}
+\\AUTOINCREMENT sorgt dafür, dass der Wert einer Spalte (meistens der Primärschlüssel) automatisch bei jedem neuen Datensatz um eins erhöht wird. Es stellt sicher, dass jede Zeile in der Tabelle eine eindeutige ID erhält, ohne dass der Benutzer diese manuell angeben muss.
+\subsubsection{}
+Bereiten Sie Datensatz so vor (per Programm oder Tabellenkalkulation), dass die Datensätze in
+die passenden Tabellen importiert werden können. Beschreiben Sie Ihr Vorgehen.
+
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bildschirmfoto 2024-11-30 um 20.48.23.png}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{itemize}
+    \item show → benutzen wir um zu überprüfen welches Trennzeichen gerade vorhanden ist
+    \item .seperator ; → benutzen .seperator um als gewünschtes Trennzeichen das Semikolon zu bestimmen
+    \item .import ‘/Users/aljoschabuntrock/Docments/Studium/Drittes Semester/Comp. M./Abgabe 1 COMET/Daten.csv’ tmp\_tables → damit importieren wir den Datensatz
+    \item SELECT * FROM tmp\_tables LIMIT 10; → wir überprüfen ob die Daten korrekt importiert wurden und beschränken uns auf die ersten 10
+
+\end{itemize}
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width=\textwidth]{Bildschirmfoto 2024-11-30 um 21.02.38.png}
+    \label{fig:enter-label}
+    
+\end{figure}
+
+    \begin{itemize}
+    \item \textbf{Tabelle station:} Eindeutige Stationsnamen und Zähldaten aus \texttt{tmp\_tables} in die Tabelle \texttt{station} eingefügt.
+    \item \textbf{Tabelle Datum:} Eindeutige Datumsinformationen aus \texttt{tmp\_tables} in die Tabelle \texttt{Datum} übertragen.
+    \item \textbf{Tabelle Wetter:} Wetterdaten aus \texttt{tmp\_tables} in die Tabelle \texttt{Wetter} eingefügt, mit Zuordnung von \texttt{stationid} und \texttt{Datumid} über geschachtelte Abfragen.
+    \item \textbf{Prüfung:} Mit \texttt{SELECT * FROM Wetter LIMIT 5;} die Einträge in der Tabelle \texttt{Wetter} überprüft.
+\end{itemize}
+
+
+\subsubsection{}
+Formulieren Sie eine Abfrage, um aus den Ihrer Gruppe zugeordneten Daten die höchste mittlere Temperatur herauszufiltern und halten Sie sowohl Abfrage als auch das Ergebnis (in Grad Celsius) fest.
+\begin{figure}[!hp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Bildschirmfoto 2024-11-30 um 21.07.22.png}
+    \label{fig:enter-label}
+\end{figure}
+\begin{center}
+    \textbf{Ergebnis:} 1 Ave \& E 68 St:28.3333333333333
+\end{center}
+\bibliographystyle{plain}
+
+\bibliography{Quellen}
+
+\end{document}
 
